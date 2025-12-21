@@ -1,6 +1,6 @@
-# Year Events Calendar - Public Website
+# DayMark: Year Calendar to Track Vacations | Google™ - Public Website
 
-Public-facing website for the Year Events Calendar browser extension, hosted on GitHub Pages.
+Public-facing website for the DayMark: Year Calendar to Track Vacations | Google™ browser extension, hosted on GitHub Pages.
 
 ## Purpose
 
