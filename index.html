@@ -261,7 +261,7 @@
         .video-container {
             position: relative;
             width: 100%;
-            max-width: 900px;
+            max-width: 100%;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
@@ -412,18 +412,20 @@
                 </p>
             </section>
 
-            <div class="video-section" id="video-section">
+            <div class="video-section">
                 <h2>See DayMark in Action</h2>
                 <div class="video-container">
-                    <video 
-                        id="daymark-video"
-                        controls 
-                        preload="metadata"
-                        muted
-                        title="DayMark: Year Calendar to Track Vacations | Google™ Video Overview">
-                        <source src="Video%20Overview%201.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe 
+                        id="youtube-video"
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/YdTwbRTklOA?enablejsapi=1&mute=1" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
 
@@ -562,20 +564,29 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        const video = document.getElementById('daymark-video');
-        const videoSection = document.getElementById('video-section');
-        let hasPlayed = false;
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        if (video && videoSection) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !hasPlayed) {
-                        video.play().catch(error => {
-                            console.log('Video autoplay prevented:', error);
-                        });
-                        hasPlayed = true;
-                    } else if (!entry.isIntersecting && hasPlayed) {
-                        video.pause();
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-video', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            var videoSection = document.querySelector('.video-section');
+            
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        player.playVideo();
+                    } else {
+                        player.pauseVideo();
                     }
                 });
             }, {
