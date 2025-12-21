@@ -253,6 +253,61 @@
             font-weight: 500;
         }
 
+        .video-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .video-container video,
+        .video-container iframe {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .video-container video {
+            max-height: 600px;
+        }
+
+        .video-container iframe {
+            aspect-ratio: 16 / 9;
+            min-height: 500px;
+        }
+
+        .video-section h2 {
+            font-size: 2.2em;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .video-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #4b5563, #374151);
+            border-radius: 2px;
+        }
+
         footer {
             text-align: center;
             padding: 50px 20px;
@@ -311,6 +366,18 @@
             .stat-item {
                 min-width: 150px;
             }
+
+            .video-container {
+                padding: 15px;
+            }
+
+            .video-container iframe {
+                min-height: 300px;
+            }
+
+            .video-section h2 {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
@@ -344,6 +411,21 @@
                     DayMark: Year Calendar to Track Vacations | Google™ gives you the flexibility to choose.
                 </p>
             </section>
+
+            <div class="video-section" id="video-section">
+                <h2>See DayMark in Action</h2>
+                <div class="video-container">
+                    <video 
+                        id="daymark-video"
+                        controls 
+                        preload="metadata"
+                        muted
+                        title="DayMark: Year Calendar to Track Vacations | Google™ Video Overview">
+                        <source src="Video%20Overview%201.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
 
             <div class="stats">
                 <div class="stat-item">
@@ -479,6 +561,29 @@
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        const video = document.getElementById('daymark-video');
+        const videoSection = document.getElementById('video-section');
+        let hasPlayed = false;
+
+        if (video && videoSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasPlayed) {
+                        video.play().catch(error => {
+                            console.log('Video autoplay prevented:', error);
+                        });
+                        hasPlayed = true;
+                    } else if (!entry.isIntersecting && hasPlayed) {
+                        video.pause();
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            observer.observe(videoSection);
+        }
     </script>
 </body>
 </html>
