@@ -110,7 +110,7 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: linear-gradient(90deg, #4b5563, #374151);
+            background: linear-gradient(90deg, #d35400 0%, #c0392b 50%, #a93226 100%);
             border-radius: 2px;
         }
 
@@ -304,8 +304,15 @@
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background: linear-gradient(90deg, #4b5563, #374151);
+            background: linear-gradient(90deg, #d35400 0%, #c0392b 50%, #a93226 100%);
             border-radius: 2px;
+        }
+
+        .daymark-red {
+            background: linear-gradient(135deg, #d35400 0%, #c0392b 50%, #a93226 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         footer {
@@ -413,7 +420,7 @@
             </section>
 
             <div class="video-section">
-                <h2>See DayMark in Action</h2>
+                <h2>See <span class="daymark-red">DayMark</span> in Action</h2>
                 <div class="video-container">
                     <iframe 
                         id="youtube-video"
