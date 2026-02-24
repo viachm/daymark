@@ -344,12 +344,6 @@
             edge: 'https://microsoftedge.microsoft.com/addons/detail/nmlfhfdbgjjcmnfnpcocpoppjimgnaam'
         };
 
-        var storeLabels = {
-            chrome: 'Install for Chrome',
-            firefox: 'Install for Firefox',
-            edge: 'Install for Edge'
-        };
-
         function detectBrowser() {
             var ua = navigator.userAgent;
             if (ua.indexOf('Firefox') !== -1) return 'firefox';
@@ -360,9 +354,7 @@
 
         var detectedBrowser = detectBrowser();
 
-        var installBtn = document.getElementById('installBtn');
-        installBtn.href = storeUrls[detectedBrowser];
-        installBtn.textContent = storeLabels[detectedBrowser];
+        document.getElementById('installBtn').href = storeUrls[detectedBrowser];
 
         var ctaBtns = document.querySelectorAll('#ctaButtons .cta-btn');
         ctaBtns.forEach(function(btn) {
