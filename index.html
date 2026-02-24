@@ -3,440 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DayMark: Year Calendar to Track Vacations | Google™ - A comprehensive browser extension for managing events with color-coded visualization, statistics, and multi-language support.">
+    <meta name="description" content="DayMark: Year Events Calendar | Google™ - A comprehensive browser extension for managing events with color-coded visualization, statistics, and multi-language support.">
     <meta name="keywords" content="calendar, year calendar, events, browser extension, time tracking, vacation planner">
     <meta name="author" content="Viacheslav Mukha">
     <meta name="google-site-verification" content="LgEKijWuAW4rtlg4k-rfDysMJshpU9vZ4BoyjMtVdMs" />
-    <title>DayMark: Year Calendar to Track Vacations | Google™ - Browser Extension</title>
+    <title>DayMark: Year Events Calendar | Google™ - Browser Extension</title>
     <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="apple-touch-icon" href="img/logo.png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #f8f9fa;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 80px 20px 60px;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f0f5 100%);
-            border-radius: 0 0 40px 40px;
-            margin: -20px -20px 40px -20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            display: block;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        header h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #d35400 0%, #c0392b 50%, #a93226 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        header h2 {
-            font-size: 2.5em;
-            margin-bottom: 25px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #374151 0%, #1f2937 50%, #111827 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 0.5px;
-        }
-
-        header p {
-            font-size: 1.4em;
-            color: #4b5563;
-            max-width: 800px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-
-        .main-content {
-            background: white;
-            border-radius: 24px;
-            padding: 60px;
-            margin: 0 auto 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        }
-
-        .section {
-            margin-bottom: 50px;
-        }
-
-        .section h2 {
-            font-size: 2.2em;
-            color: #1a1a1a;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #d35400 0%, #c0392b 50%, #a93226 100%);
-            border-radius: 2px;
-        }
-
-        .section p {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            color: #4b5563;
-            line-height: 1.8;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #4b5563, #374151);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            border-color: #d1d5db;
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: #1a1a1a;
-        }
-
-        .feature-card p {
-            color: #6b7280;
-            font-size: 1em;
-            line-height: 1.6;
-        }
-
-        .cta-section {
-            text-align: center;
-            padding: 60px 40px;
-            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
-            border-radius: 20px;
-            margin: 50px 0;
-            color: white;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 15px;
-            font-size: 2.5em;
-        }
-
-        .cta-section h2::after {
-            display: none;
-        }
-
-        .cta-section > p {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.2em;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 16px 40px;
-            background: white;
-            color: #c0392b;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: 600;
-            margin: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            background: #f8fafc;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 50px 0;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 30px;
-            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-            border-radius: 16px;
-            border: 1px solid #e5e7eb;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .stat-number {
-            font-size: 3.5em;
-            font-weight: 700;
-            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1.1em;
-            color: #6b7280;
-            margin-top: 10px;
-            font-weight: 500;
-        }
-
-        .video-section {
-            margin: 40px 0;
-            text-align: center;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .video-container video,
-        .video-container iframe {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            display: block;
-        }
-
-        .video-container video {
-            max-height: 600px;
-        }
-
-        .video-container iframe {
-            aspect-ratio: 16 / 9;
-            min-height: 500px;
-        }
-
-        .video-section h2 {
-            font-size: 2.2em;
-            color: #1a1a1a;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .video-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #d35400 0%, #c0392b 50%, #a93226 100%);
-            border-radius: 2px;
-        }
-
-        .daymark-red {
-            background: linear-gradient(135deg, #d35400 0%, #c0392b 50%, #a93226 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            color: #6b7280;
-            background: white;
-            border-radius: 24px;
-            margin-top: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        }
-
-        footer a {
-            color: #4b5563;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #1f2937;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5em;
-            }
-
-            header h2 {
-                font-size: 1.5em;
-            }
-
-            header p {
-                font-size: 1.1em;
-            }
-
-            .main-content {
-                padding: 30px 20px;
-            }
-
-            .section h2 {
-                font-size: 1.8em;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section {
-                padding: 40px 20px;
-            }
-
-            .cta-section h2 {
-                font-size: 2em;
-            }
-
-            .stat-item {
-                min-width: 150px;
-            }
-
-            .video-container {
-                padding: 15px;
-            }
-
-            .video-container iframe {
-                min-height: 300px;
-            }
-
-            .video-section h2 {
-                font-size: 1.8em;
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="img/logo.png" alt="DayMark: Year Calendar to Track Vacations | Google™ Logo" class="logo">
-            <h1>DayMark</h1>
-            <h2>Year Calendar to Track Vacations | Google™</h2>
-            <p>Browser Extension that will transform your year into a colorful story. Track, visualize, and never forget what matters — all just one click away.</p>
-        </header>
 
-        <div class="main-content">
-            <section class="section">
-                <h2>About DayMark: Year Calendar to Track Vacations | Google™</h2>
-                <p>
-                    DayMark: Year Calendar to Track Vacations | Google™ is a powerful browser extension that displays a complete annual calendar with the ability to 
-                    <strong>highlight custom events</strong> such as holidays, vacations, or other notable days. 
-                    Create and organize events spanning one or multiple days with a personalized color-coding system that makes tracking 
-                    different event types intuitive and visually distinct.
-                </p>
-                <p>
-                    <strong>Highlight public holidays</strong> in your country, <strong>track your vacations</strong>, manage work projects, 
-                    or plan personal events. View detailed <strong>event statistics</strong> to understand patterns like how many vacation 
-                    days you've taken throughout the year. Configure your calendar display with <strong>week numbers and month numbers</strong> 
-                    for better date referencing.
-                </p>
-                <p>
-                    With <strong>Google Calendar integration</strong>, you can sync and backup your events to the cloud, ensuring your data 
-                    is safe and accessible across devices. Whether you need local storage for privacy or cloud backup for convenience, 
-                    DayMark: Year Calendar to Track Vacations | Google™ gives you the flexibility to choose.
-                </p>
-            </section>
-
-            <div class="video-section">
-                <h2>See <span class="daymark-red">DayMark</span> in Action</h2>
-                <div class="video-container">
-                    <iframe 
-                        id="youtube-video"
-                        width="560" 
-                        height="315" 
-                        src="https://www.youtube.com/embed/YdTwbRTklOA?enablejsapi=1&mute=1" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <img src="img/logo.png" alt="DayMark" class="nav-logo">
+                <span>DayMark</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="https://chromewebstore.google.com/detail/year-events-calendar/llkdnaajdbpjiodmejeihpjeaegohpak" class="nav-cta">Install</a>
             </div>
+        </div>
+    </nav>
 
-            <div class="stats">
+    <section class="hero" id="hero">
+        <div class="hero-dots"></div>
+        <div class="container">
+            <img src="img/logo.png" alt="DayMark Logo" class="hero-logo">
+            <h1>DayMark</h1>
+            <p class="hero-subtitle">Year Events Calendar | Google™</p>
+            <p class="hero-desc">Transform your year into a colorful story. Track, visualize, and never forget what matters — all just one click away.</p>
+        </div>
+    </section>
+
+    <section class="section fade-up" id="about">
+        <div class="container">
+            <h2 class="section-title">About DayMark</h2>
+            <p class="section-text">
+                DayMark: Year Events Calendar | Google™ is a powerful browser extension that displays a complete annual calendar with the ability to
+                <strong>highlight custom events</strong> such as holidays, vacations, or other notable days.
+                Create and organize events spanning one or multiple days with a personalized color-coding system that makes tracking
+                different event types intuitive and visually distinct.
+            </p>
+            <p class="section-text">
+                <strong>Highlight public holidays</strong> in your country, <strong>track your vacations</strong>, manage work projects,
+                or plan personal events. View detailed <strong>event statistics</strong> to understand patterns like how many vacation
+                days you've taken throughout the year. Configure your calendar display with <strong>week numbers and month numbers</strong>
+                for better date referencing.
+            </p>
+            <p class="section-text">
+                With <strong>Google Calendar integration</strong>, you can sync and backup your events to the cloud, ensuring your data
+                is safe and accessible across devices. Whether you need local storage for privacy or cloud backup for convenience,
+                DayMark: Year Events Calendar | Google™ gives you the flexibility to choose.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-alt fade-up" id="demo">
+        <div class="container">
+            <h2 class="section-title section-title-center">See <span class="brand-text">DayMark</span> in Action</h2>
+            <div class="video-wrap">
+                <iframe
+                    id="youtube-video"
+                    src="https://www.youtube.com/embed/YdTwbRTklOA?enablejsapi=1&mute=1"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-up" id="at-a-glance">
+        <div class="container">
+            <h2 class="section-title section-title-center">DayMark at a Glance</h2>
+            <div class="stats-row">
                 <div class="stat-item">
                     <span class="stat-number">25+</span>
                     <span class="stat-label">Languages Supported</span>
@@ -450,158 +102,298 @@
                     <span class="stat-label">Days at a Glance</span>
                 </div>
             </div>
-
-            <section class="section">
-                <h2>Key Features</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>🎨 Color-Coded Events</h3>
-                        <p>Add custom events for one or multiple days with personalized colors. Easily distinguish between vacations, holidays, work projects, and personal events at a glance.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>📊 Event Statistics</h3>
-                        <p>View statistics of events to understand how many vacation days were selected throughout the year. Track time allocation with intelligent analytics for each color category.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>🗓️ Highlight Any Day</h3>
-                        <p>Highlight public holidays in your country, track your vacations, mark important deadlines, or celebrate special occasions with custom colors and descriptions.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>⚙️ Customizable Display</h3>
-                        <p>Configure displaying week numbers and month numbers. Choose your preferred week start day (Monday or Sunday) for optimal calendar viewing.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>☁️ Google Calendar Backup</h3>
-                        <p>Optional Google Calendar integration for cloud backup and sync. Keep your events safe and accessible across devices while maintaining full control of your data.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>🌍 Multi-Language Support</h3>
-                        <p>Available in 25+ languages including English, Spanish, German, French, Italian, Japanese, Korean, Chinese, and many more.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>💾 Local & Cloud Storage</h3>
-                        <p>Store events locally in your browser for privacy or sync with Google Calendar for backup. Your choice, your data, your control.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>📅 Full Year View</h3>
-                        <p>See your entire year at a glance. Quickly navigate between months and years to plan ahead or review past events with ease.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>🏷️ Custom Event Categories</h3>
-                        <p>Name your color categories for better organization. Assign meaningful labels like "Vacation", "Holiday", or "Work Project" to each color for clearer event identification and statistics tracking.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Perfect For</h2>
-                <p>✅ <strong>Vacation Planning:</strong> Track and visualize your vacation days throughout the year with color-coded highlighting</p>
-                <p>✅ <strong>Holiday Tracking:</strong> Highlight public holidays in your country so you never miss important dates</p>
-                <p>✅ <strong>Time Analysis:</strong> View statistics to understand how many days were allocated to different activities</p>
-                <p>✅ <strong>Personal Goals:</strong> Monitor habits, fitness goals, or learning schedules with daily tracking</p>
-                <p>✅ <strong>Work Scheduling:</strong> Plan work days, meetings, and important deadlines with week/month numbers</p>
-                <p>✅ <strong>Data Backup:</strong> Optional Google Calendar integration ensures your events are safely backed up to the cloud</p>
-            </section>
-
-            <div class="cta-section">
-                <h2>Get DayMark: Year Calendar to Track Vacations | Google™ Now</h2>
-                <p style="color: white; margin-bottom: 30px;">Available for Chrome, Firefox, and Edge</p>
-                <a href="https://chromewebstore.google.com/detail/year-events-calendar/llkdnaajdbpjiodmejeihpjeaegohpak" class="cta-button">Chrome Web Store</a>
-                <a href="https://addons.mozilla.org/en-US/firefox/addon/year-events-calendar/" class="cta-button">Firefox Add-ons</a>
-                <a href="https://microsoftedge.microsoft.com/addons/detail/year-events-calendar/nmlfhfdbgjjcmnfnpcocpoppjimgnaam" class="cta-button">Edge Add-ons</a>
-            </div>
-
-            <section class="section">
-                <h2>How It Works</h2>
-                <p><strong>1. Install the Extension</strong></p>
-                <p>Add DayMark: Year Calendar to Track Vacations | Google™ to your browser with one click. Available for Chrome, Firefox, and Edge.</p>
-                
-                <p style="margin-top: 20px;"><strong>2. Add Your Events</strong></p>
-                <p>Click any day or range of days to create custom events. Choose a color, add a name and description, and save.</p>
-                
-                <p style="margin-top: 20px;"><strong>3. View Your Year</strong></p>
-                <p>See your entire year with color-coded events. Configure week numbers, month numbers, and display preferences.</p>
-                
-                <p style="margin-top: 20px;"><strong>4. Track Statistics</strong></p>
-                <p>View how many days are allocated to each event type. Understand your time allocation patterns throughout the year.</p>
-                
-                <p style="margin-top: 20px;"><strong>5. Backup to Google Calendar (Optional)</strong></p>
-                <p>Connect to Google Calendar to automatically backup your events to the cloud. Your data stays safe and accessible across devices.</p>
-            </section>
-
-            <section class="section">
-                <h2>Privacy & Security</h2>
-                <p>
-                    We take your privacy seriously. DayMark: Year Calendar to Track Vacations | Google™ stores all your data locally in your browser by default. 
-                    When you choose to use Google Calendar integration for backup purposes, we only access the data you explicitly authorize, 
-                    and we never share your information with third parties.
-                </p>
-                <p>
-                    <strong>Your data, your control:</strong> Use local storage for complete privacy, or enable Google Calendar backup for convenience. The choice is yours.
-                </p>
-                <p>
-                    <a href="privacy.html" style="color: #c0392b; font-weight: 600;">Read our Privacy Policy</a> | 
-                    <a href="terms.html" style="color: #c0392b; font-weight: 600;">Read our Terms of Service</a>
-                </p>
-            </section>
-
-            <section class="section">
-                <h2>Support & Contact</h2>
-                <p>
-                    If you have questions, suggestions, or need support, please feel free to reach out:
-                </p>
-                <p>
-                    <strong>Developer:</strong> Viacheslav Mukha<br>
-                    <strong>Email:</strong> <a href="mailto:viacheslav.mukha@gmail.com" style="color: #4b5563; text-decoration: none;">viacheslav.mukha@gmail.com</a>
-                </p>
-            </section>
         </div>
+    </section>
 
-        <footer>
-            <p>&copy; <span id="year"></span> DayMark: Year Calendar to Track Vacations | Google™ by Viacheslav Mukha. All rights reserved.</p>
-            <p>
-                <a href="privacy.html">Privacy Policy</a> | 
-                <a href="terms.html">Terms of Service</a> | 
-                <a href="https://chromewebstore.google.com/detail/year-events-calendar/llkdnaajdbpjiodmejeihpjeaegohpak">Chrome Web Store</a> | 
-                <a href="mailto:viacheslav.mukha@gmail.com">Contact</a>
+    <section class="section section-alt fade-up" id="features">
+        <div class="container">
+            <h2 class="section-title section-title-center">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                    </div>
+                    <h3>Color-Coded Events</h3>
+                    <p>Add custom events for one or multiple days with personalized colors. Easily distinguish between vacations, holidays, work projects, and personal events at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    </div>
+                    <h3>Event Statistics</h3>
+                    <p>View statistics of events to understand how many vacation days were selected throughout the year. Track time allocation with intelligent analytics for each color category.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg>
+                    </div>
+                    <h3>Highlight Any Day</h3>
+                    <p>Highlight public holidays in your country, track your vacations, mark important deadlines, or celebrate special occasions with custom colors and descriptions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>
+                    </div>
+                    <h3>Customizable Display</h3>
+                    <p>Configure displaying week numbers and month numbers. Choose your preferred week start day (Monday or Sunday) for optimal calendar viewing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
+                    </div>
+                    <h3>Google Calendar Backup</h3>
+                    <p>Optional Google Calendar integration for cloud backup and sync. Keep your events safe and accessible across devices while maintaining full control of your data.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></svg>
+                    </div>
+                    <h3>Multi-Language Support</h3>
+                    <p>Available in 25+ languages including English, Spanish, German, French, Italian, Japanese, Korean, Chinese, and many more.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+                    </div>
+                    <h3>Local &amp; Cloud Storage</h3>
+                    <p>Store events locally in your browser for privacy or sync with Google Calendar for backup. Your choice, your data, your control.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
+                    </div>
+                    <h3>Full Year View</h3>
+                    <p>See your entire year at a glance. Quickly navigate between months and years to plan ahead or review past events with ease.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+                    </div>
+                    <h3>Custom Event Categories</h3>
+                    <p>Name your color categories for better organization. Assign meaningful labels like "Vacation", "Holiday", or "Work Project" to each color for clearer event identification and statistics tracking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-up" id="perfect-for">
+        <div class="container">
+            <h2 class="section-title section-title-center">Perfect For</h2>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                    </div>
+                    <h3>Vacation Planning</h3>
+                    <p>Track and visualize your vacation days throughout the year with color-coded highlighting</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>Holiday Tracking</h3>
+                    <p>Highlight public holidays in your country so you never miss important dates</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                    </div>
+                    <h3>Time Analysis</h3>
+                    <p>View statistics to understand how many days were allocated to different activities</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                    </div>
+                    <h3>Personal Goals</h3>
+                    <p>Monitor habits, fitness goals, or learning schedules with daily tracking</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3"/></svg>
+                    </div>
+                    <h3>Work Scheduling</h3>
+                    <p>Plan work days, meetings, and important deadlines with week/month numbers</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <h3>Data Backup</h3>
+                    <p>Optional Google Calendar integration ensures your events are safely backed up to the cloud</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta fade-up" id="get-daymark">
+        <div class="container">
+            <h2>Get DayMark Now</h2>
+            <p class="cta-sub">Available for Chrome, Firefox, and Edge</p>
+            <div class="cta-buttons">
+                <a href="https://chromewebstore.google.com/detail/year-events-calendar/llkdnaajdbpjiodmejeihpjeaegohpak" class="cta-btn cta-btn-primary">Chrome Web Store</a>
+                <a href="https://addons.mozilla.org/en-US/firefox/addon/year-events-calendar/" class="cta-btn cta-btn-outline">Firefox Add-ons</a>
+                <a href="https://microsoftedge.microsoft.com/addons/detail/year-events-calendar/nmlfhfdbgjjcmnfnpcocpoppjimgnaam" class="cta-btn cta-btn-outline">Edge Add-ons</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt fade-up" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="timeline-num">1</div>
+                    <h3>Install the Extension</h3>
+                    <p>Add DayMark: Year Events Calendar | Google™ to your browser with one click. Available for Chrome, Firefox, and Edge.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-num">2</div>
+                    <h3>Add Your Events</h3>
+                    <p>Click any day or range of days to create custom events. Choose a color, add a name and description, and save.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-num">3</div>
+                    <h3>View Your Year</h3>
+                    <p>See your entire year with color-coded events. Configure week numbers, month numbers, and display preferences.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-num">4</div>
+                    <h3>Track Statistics</h3>
+                    <p>View how many days are allocated to each event type. Understand your time allocation patterns throughout the year.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-num">5</div>
+                    <h3>Backup to Google Calendar (Optional)</h3>
+                    <p>Connect to Google Calendar to automatically backup your events to the cloud. Your data stays safe and accessible across devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-up" id="privacy-security">
+        <div class="container">
+            <h2 class="section-title">Privacy &amp; Security</h2>
+            <p class="section-text">
+                We take your privacy seriously. DayMark: Year Events Calendar | Google™ stores all your data locally in your browser by default.
+                When you choose to use Google Calendar integration for backup purposes, we only access the data you explicitly authorize,
+                and we never share your information with third parties.
             </p>
-        </footer>
-    </div>
+            <p class="section-text">
+                <strong>Your data, your control:</strong> Use local storage for complete privacy, or enable Google Calendar backup for convenience. The choice is yours.
+            </p>
+            <p class="section-text">
+                <a href="privacy.html">Read our Privacy Policy</a> &nbsp;|&nbsp;
+                <a href="terms.html">Read our Terms of Service</a>
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-alt fade-up" id="support">
+        <div class="container">
+            <h2 class="section-title">Support &amp; Contact</h2>
+            <p class="section-text">
+                If you have questions, suggestions, or need support, please feel free to reach out:
+            </p>
+            <p class="section-text">
+                <strong>Developer:</strong> Viacheslav Mukha<br>
+                <strong>Email:</strong> <a href="mailto:viacheslav.mukha@gmail.com">viacheslav.mukha@gmail.com</a>
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="img/logo.png" alt="">
+                        <span>DayMark</span>
+                    </div>
+                    <p class="footer-desc">Year Events Calendar | Google™. A browser extension for managing events with color-coded visualization, statistics, and multi-language support.</p>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://chromewebstore.google.com/detail/year-events-calendar/llkdnaajdbpjiodmejeihpjeaegohpak">Chrome Web Store</a></li>
+                        <li><a href="https://addons.mozilla.org/en-US/firefox/addon/year-events-calendar/">Firefox Add-ons</a></li>
+                        <li><a href="https://microsoftedge.microsoft.com/addons/detail/year-events-calendar/nmlfhfdbgjjcmnfnpcocpoppjimgnaam">Edge Add-ons</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="mailto:viacheslav.mukha@gmail.com">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> DayMark: Year Events Calendar | Google™ by Viacheslav Mukha. All rights reserved.
+            </div>
+        </div>
+    </footer>
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        var nav = document.getElementById('nav');
+        window.addEventListener('scroll', function() {
+            nav.classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        document.getElementById('navToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        var heroDots = document.querySelector('.hero-dots');
+        var heroSection = document.getElementById('hero');
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    if (heroSection.getBoundingClientRect().bottom > 0) {
+                        heroDots.style.transform = 'translateY(' + (window.scrollY * 0.25) + 'px)';
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        var fadeEls = document.querySelectorAll('.fade-up');
+        var fadeObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+        fadeEls.forEach(function(el) { fadeObserver.observe(el); });
+
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        document.head.appendChild(tag);
 
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-video', {
-                events: {
-                    'onReady': onPlayerReady
-                }
+                events: { 'onReady': onPlayerReady }
             });
         }
 
-        function onPlayerReady(event) {
-            var videoSection = document.querySelector('.video-section');
-            
-            var observer = new IntersectionObserver(function(entries) {
+        function onPlayerReady() {
+            var videoSection = document.getElementById('demo');
+            var vidObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        player.playVideo();
-                    } else {
-                        player.pauseVideo();
-                    }
+                    if (entry.isIntersecting) { player.playVideo(); }
+                    else { player.pauseVideo(); }
                 });
-            }, {
-                threshold: 0.5
-            });
-
-            observer.observe(videoSection);
+            }, { threshold: 0.5 });
+            vidObserver.observe(videoSection);
         }
     </script>
+
 </body>
 </html>
