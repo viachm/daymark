@@ -7,6 +7,14 @@
     <meta name="keywords" content="calendar, year calendar, events, browser extension, time tracking, vacation planner">
     <meta name="author" content="Viacheslav Mukha">
     <meta name="google-site-verification" content="LgEKijWuAW4rtlg4k-rfDysMJshpU9vZ4BoyjMtVdMs" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z2MKS2S2ZM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z2MKS2S2ZM');
+    </script>
     <title>DayMark: Year Events Calendar | Google™ - Browser Extension</title>
     <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="apple-touch-icon" href="img/logo.png">
@@ -409,7 +417,10 @@
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-video', {
-                events: { 'onReady': onPlayerReady }
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
             });
         }
 
@@ -423,6 +434,83 @@
             }, { threshold: 0.5 });
             vidObserver.observe(videoSection);
         }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+                gtag('event', 'video_play', { video_id: 'YdTwbRTklOA' });
+            } else if (event.data === YT.PlayerState.PAUSED) {
+                gtag('event', 'video_pause', { video_id: 'YdTwbRTklOA' });
+            }
+        }
+
+        // Install button clicks
+        document.getElementById('installBtn').addEventListener('click', function() {
+            gtag('event', 'install_click', { browser: detectedBrowser, location: 'nav' });
+        });
+
+        document.querySelectorAll('#ctaButtons .cta-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                gtag('event', 'install_click', {
+                    browser: btn.getAttribute('data-browser'),
+                    location: 'cta_section'
+                });
+            });
+        });
+
+        document.querySelectorAll('.footer-links a[href*="chromewebstore"], .footer-links a[href*="addons.mozilla"], .footer-links a[href*="microsoftedge"]').forEach(function(link) {
+            link.addEventListener('click', function() {
+                var href = link.getAttribute('href');
+                var browser = href.indexOf('chromewebstore') !== -1 ? 'chrome'
+                            : href.indexOf('mozilla') !== -1 ? 'firefox' : 'edge';
+                gtag('event', 'install_click', { browser: browser, location: 'footer' });
+            });
+        });
+
+        // Nav link clicks
+        document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(function(link) {
+            link.addEventListener('click', function() {
+                gtag('event', 'nav_click', { link: link.getAttribute('href') });
+            });
+        });
+
+        // Contact email click
+        document.querySelector('a[href^="mailto"]').addEventListener('click', function() {
+            gtag('event', 'contact_click');
+        });
+
+        // Footer legal links
+        document.querySelectorAll('.footer-links a[href="privacy.html"], .footer-links a[href="terms.html"]').forEach(function(link) {
+            link.addEventListener('click', function() {
+                gtag('event', 'footer_link_click', { link: link.getAttribute('href') });
+            });
+        });
+
+        // Section visibility
+        var sectionIds = ['about', 'demo', 'at-a-glance', 'features', 'perfect-for', 'get-daymark', 'how-it-works', 'privacy-security', 'support'];
+        var sectionObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    gtag('event', 'section_view', { section_id: entry.target.id });
+                    sectionObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        sectionIds.forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) sectionObserver.observe(el);
+        });
+
+        // Scroll depth milestones
+        var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+        window.addEventListener('scroll', function() {
+            var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            [25, 50, 75, 100].forEach(function(milestone) {
+                if (!scrollMilestones[milestone] && scrollPct >= milestone) {
+                    scrollMilestones[milestone] = true;
+                    gtag('event', 'scroll_depth', { percent: milestone });
+                }
+            });
+        });
     </script>
 
 </body>
