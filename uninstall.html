@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sorry to see you go - tell us why you removed DayMark: Year Events Calendar | Google™">
+    <meta name="google-site-verification" content="LgEKijWuAW4rtlg4k-rfDysMJshpU9vZ4BoyjMtVdMs" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z2MKS2S2ZM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z2MKS2S2ZM');
+    </script>
+    <title>Sorry to see you go - DayMark: Year Events Calendar | Google™</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <img src="img/logo.png" alt="DayMark" class="nav-logo">
+                <span>DayMark</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#features">Features</a>
+                <a href="index.html">Home</a>
+                <a href="terms.html">Terms</a>
+                <a href="https://chromewebstore.google.com/detail/year-events-calendar/llkdnaajdbpjiodmejeihpjeaegohpak?utm_source=daymark_landing&utm_medium=landing&utm_campaign=install&utm_content=uninstall_nav" class="nav-cta">Install</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-legal">
+        <div class="container">
+            <h1>Sorry to see you go</h1>
+            <p>DayMark: Year Events Calendar | Google™ has been removed</p>
+        </div>
+    </section>
+
+    <div class="legal-wrap">
+        <div class="container">
+            <div class="legal-content uninstall-content">
+                <h2>What made you remove DayMark?</h2>
+                <p>One click helps us make the next version better. Nothing else about you is sent.</p>
+                <div class="feedback-options" id="feedbackOptions">
+                    <button type="button" class="feedback-option" data-reason="not_needed">I don't need it anymore</button>
+                    <button type="button" class="feedback-option" data-reason="missing_feature">A feature I need is missing</button>
+                    <button type="button" class="feedback-option" data-reason="hard_to_use">It was hard to use</button>
+                    <button type="button" class="feedback-option" data-reason="bug">Something didn't work</button>
+                    <button type="button" class="feedback-option" data-reason="google_sync">Google Calendar backup issues</button>
+                    <button type="button" class="feedback-option" data-reason="other_app">I switched to another app</button>
+                    <button type="button" class="feedback-option" data-reason="other">Other reason</button>
+                </div>
+                <p class="feedback-thanks" id="feedbackThanks" hidden>
+                    Thank you! If you want to tell us more, write to
+                    <a href="mailto:viacheslav.mukha@gmail.com?subject=DayMark%20feedback">viacheslav.mukha@gmail.com</a>.
+                </p>
+                <p class="feedback-reinstall">
+                    Removed it by accident?
+                    <a href="https://chromewebstore.google.com/detail/llkdnaajdbpjiodmejeihpjeaegohpak?utm_source=daymark_landing&amp;utm_medium=landing&amp;utm_campaign=install&amp;utm_content=uninstall_reinstall" id="reinstallLink">Install DayMark again</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="img/logo.png" alt="">
+                        <span>DayMark</span>
+                    </div>
+                    <p class="footer-desc">Year Events Calendar | Google™. A browser extension for managing events with color-coded visualization, statistics, and multi-language support.</p>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://chromewebstore.google.com/detail/year-events-calendar/llkdnaajdbpjiodmejeihpjeaegohpak?utm_source=daymark_landing&utm_medium=landing&utm_campaign=install&utm_content=uninstall_footer">Chrome Web Store</a></li>
+                        <li><a href="https://addons.mozilla.org/en-US/firefox/addon/year-events-calendar/">Firefox Add-ons</a></li>
+                        <li><a href="https://microsoftedge.microsoft.com/addons/detail/year-events-calendar/nmlfhfdbgjjcmnfnpcocpoppjimgnaam?utm_source=daymark_landing&utm_medium=landing&utm_campaign=install&utm_content=uninstall_footer">Edge Add-ons</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="mailto:viacheslav.mukha@gmail.com">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> DayMark: Year Events Calendar | Google™ by Viacheslav Mukha. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        var nav = document.getElementById('nav');
+        window.addEventListener('scroll', function() {
+            nav.classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        document.getElementById('navToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+    </script>
+
+    <script>
+        // Uninstall page: opened by the extension (?v=<version>), feedback goes to the landing GA property
+        var params = new URLSearchParams(location.search);
+        var extVersion = (params.get('v') || 'unknown').slice(0, 20);
+        gtag('event', 'extension_uninstall', { ext_version: extVersion });
+
+        document.querySelectorAll('#feedbackOptions .feedback-option').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                gtag('event', 'uninstall_feedback', { reason: btn.getAttribute('data-reason'), ext_version: extVersion });
+                document.querySelectorAll('#feedbackOptions .feedback-option').forEach(function(b) {
+                    b.disabled = true;
+                    b.classList.toggle('selected', b === btn);
+                });
+                document.getElementById('feedbackThanks').hidden = false;
+            });
+        });
+
+        document.getElementById('reinstallLink').addEventListener('click', function() {
+            gtag('event', 'install_click', { browser: 'chrome', location: 'uninstall_page' });
+        });
+    </script>
+</body>
+</html>
