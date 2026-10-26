@@ -152,12 +152,8 @@
     <script src="feedback-i18n.js"></script>
     <script>
         // Feedback page: opened from the extension (?v=<version>&b=<browser>&lang=<language>&src=<where>) or the site.
-        // Messages go to a Google Form; its Apps Script mails each one to the developer.
-        var FEEDBACK_FORM = {
-            // https://docs.google.com/forms/d/e/<form id>/formResponse, and the form's entry.<id> of each question
-            action: '',
-            entries: { type: '', message: '', email: '', version: '', browser: '', language: '', source: '' }
-        };
+        // Messages go to a Google Apps Script web app in the developer's account, which mails each one to the developer.
+        var FEEDBACK_ENDPOINT = 'https://script.google.com/macros/s/AKfycbynujIscGcnmkSvMz9Gk8_hsUpPmg33N-Au3DACPDHCpoq42SBAbDrlIzkES9hnPqtX/exec';
 
         var params = new URLSearchParams(location.search);
         var extVersion = (params.get('v') || 'unknown').slice(0, 20);
@@ -221,15 +217,10 @@
 
             submit.disabled = true;
             submit.textContent = t.sending || 'Sending…';
-            var body = new URLSearchParams();
-            var values = { type: type, message: text, email: mail, version: extVersion, browser: extBrowser, language: language, source: source };
-            Object.keys(values).forEach(function(key) {
-                if (FEEDBACK_FORM.entries[key]) body.append(FEEDBACK_FORM.entries[key], values[key]);
-            });
+            var body = new URLSearchParams({ type: type, message: text, email: mail, version: extVersion, browser: extBrowser, language: language, source: source });
 
-            var sent = FEEDBACK_FORM.action
-                ? fetch(FEEDBACK_FORM.action, { method: 'POST', mode: 'no-cors', body: body })
-                : Promise.reject(new Error('Feedback form is not set up'));
+            // The script's reply is cross-origin and unreadable (no-cors): only a network failure counts as not sent
+            var sent = fetch(FEEDBACK_ENDPOINT, { method: 'POST', mode: 'no-cors', body: body });
             sent.then(function() {
                 gtag('event', 'feedback_send', { type: type, source: source, ext_version: extVersion, ext_browser: extBrowser, with_email: mail ? 'yes' : 'no' });
                 showDone();
