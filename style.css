@@ -1095,8 +1095,91 @@ img { max-width: 100%; height: auto; display: block; }
     transform: none;
 }
 
-.feedback-done h2 {
-    margin-bottom: 6px;
+/* display: flex/block above would otherwise beat the hidden attribute */
+.feedback-form[hidden],
+.feedback-done[hidden],
+.feedback-thanks[hidden],
+.feedback-error[hidden] {
+    display: none;
+}
+
+.feedback-done-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.feedback-done-icon {
+    flex: 0 0 auto;
+}
+
+.uninstall-content .feedback-done h2 {
+    font-size: 1.625rem;
+    font-weight: 800;
+    margin: 0;
+    padding: 0;
+    line-height: 1.25;
+}
+
+.feedback-done h2:focus {
+    outline: none;
+}
+
+.feedback-done h2:focus-visible {
+    outline: 2px solid #c0392b;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.feedback-sent {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.feedback-sent-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.legal-content .feedback-sent-text {
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.feedback-again {
+    margin-top: 20px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #c0392b;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.feedback-again:hover {
+    color: #d35400;
+}
+
+.feedback-again:focus-visible {
+    outline: 2px solid #c0392b;
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
 .support-feedback {

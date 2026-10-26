@@ -91,8 +91,19 @@
                 </form>
 
                 <div class="feedback-done" id="feedbackDone" role="status" hidden>
-                    <h2 data-i18n="thanksTitle">Thank you!</h2>
+                    <div class="feedback-done-head">
+                        <svg class="feedback-done-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false">
+                            <circle cx="12" cy="12" r="12" fill="#dcfce7"/>
+                            <path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h2 id="feedbackDoneTitle" tabindex="-1" data-i18n="thanksTitle">Thank you!</h2>
+                    </div>
                     <p data-i18n="thanksText">Your message has been sent. If you left your email, I will reply.</p>
+                    <div class="feedback-sent">
+                        <span class="feedback-sent-label" data-i18n="yourMessage">Your message</span>
+                        <p class="feedback-sent-text" id="feedbackSentText"></p>
+                    </div>
+                    <button type="button" class="feedback-again" id="feedbackAgain" data-i18n="sendAnother">Send another message</button>
                 </div>
 
                 <p class="feedback-thanks" id="feedbackFailed" role="alert" hidden>
@@ -196,11 +207,28 @@
         var message = document.getElementById('feedbackMessage');
         var email = document.getElementById('feedbackEmail');
 
-        function showDone() {
+        var done = document.getElementById('feedbackDone');
+
+        function showDone(text) {
             form.hidden = true;
             document.getElementById('feedbackFailed').hidden = true;
-            document.getElementById('feedbackDone').hidden = false;
+            // User input: textContent only, never innerHTML
+            document.getElementById('feedbackSentText').textContent = text;
+            done.hidden = false;
+            document.getElementById('feedbackDoneTitle').focus();
         }
+
+        // Back to an empty form, keeping the chosen type and email
+        document.getElementById('feedbackAgain').addEventListener('click', function() {
+            done.hidden = true;
+            document.getElementById('feedbackSentText').textContent = '';
+            message.value = '';
+            document.getElementById('messageError').hidden = true;
+            submit.disabled = false;
+            submit.textContent = t.send || 'Send';
+            form.hidden = false;
+            message.focus();
+        });
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -213,7 +241,7 @@
 
             var type = form.elements.type.value;
             // A filled trap field is a bot: look done, send nothing
-            if (form.elements.website.value) { showDone(); return; }
+            if (form.elements.website.value) { showDone(text); return; }
 
             submit.disabled = true;
             submit.textContent = t.sending || 'Sending…';
@@ -223,7 +251,7 @@
             var sent = fetch(FEEDBACK_ENDPOINT, { method: 'POST', mode: 'no-cors', body: body });
             sent.then(function() {
                 gtag('event', 'feedback_send', { type: type, source: source, ext_version: extVersion, ext_browser: extBrowser, with_email: mail ? 'yes' : 'no' });
-                showDone();
+                showDone(text);
             }).catch(function() {
                 gtag('event', 'feedback_send_failed', { source: source, ext_version: extVersion });
                 submit.disabled = false;

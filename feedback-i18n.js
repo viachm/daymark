@@ -18,7 +18,9 @@ window.FEEDBACK_I18N = {
         sending: 'Sending…',
         thanksTitle: 'Thank you!',
         thanksText: 'Your message has been sent. If you left your email, I will reply.',
-        sendFailed: 'The message could not be sent. Please try again, or write to'
+        sendFailed: 'The message could not be sent. Please try again, or write to',
+        yourMessage: 'Your message',
+        sendAnother: 'Send another message'
     },
     uk: {
         pageTitle: 'Надіслати відгук',
@@ -38,7 +40,9 @@ window.FEEDBACK_I18N = {
         sending: 'Надсилаю…',
         thanksTitle: 'Дякую!',
         thanksText: 'Повідомлення надіслано. Якщо ви залишили email, я відповім.',
-        sendFailed: 'Не вдалося надіслати повідомлення. Спробуйте ще раз або напишіть на'
+        sendFailed: 'Не вдалося надіслати повідомлення. Спробуйте ще раз або напишіть на',
+        yourMessage: 'Ваше повідомлення',
+        sendAnother: 'Надіслати ще одне повідомлення'
     },
     ca: {
         pageTitle: 'Envia comentaris',
@@ -58,7 +62,9 @@ window.FEEDBACK_I18N = {
         sending: 'S’està enviant…',
         thanksTitle: 'Gràcies!',
         thanksText: 'El missatge s’ha enviat. Si has deixat el teu correu, et respondré.',
-        sendFailed: 'No s’ha pogut enviar el missatge. Torna-ho a provar o escriu a'
+        sendFailed: 'No s’ha pogut enviar el missatge. Torna-ho a provar o escriu a',
+        yourMessage: 'El teu missatge',
+        sendAnother: 'Envia un altre missatge'
     },
     cs: {
         pageTitle: 'Odeslat zpětnou vazbu',
@@ -78,7 +84,9 @@ window.FEEDBACK_I18N = {
         sending: 'Odesílá se…',
         thanksTitle: 'Děkuji!',
         thanksText: 'Zpráva byla odeslána. Pokud jste zanechali e-mail, odpovím vám.',
-        sendFailed: 'Zprávu se nepodařilo odeslat. Zkuste to znovu, nebo napište na'
+        sendFailed: 'Zprávu se nepodařilo odeslat. Zkuste to znovu, nebo napište na',
+        yourMessage: 'Vaše zpráva',
+        sendAnother: 'Odeslat další zprávu'
     },
     de: {
         pageTitle: 'Feedback senden',
@@ -98,7 +106,9 @@ window.FEEDBACK_I18N = {
         sending: 'Wird gesendet…',
         thanksTitle: 'Vielen Dank!',
         thanksText: 'Ihre Nachricht wurde gesendet. Wenn Sie Ihre E-Mail-Adresse angegeben haben, antworte ich Ihnen.',
-        sendFailed: 'Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an'
+        sendFailed: 'Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an',
+        yourMessage: 'Ihre Nachricht',
+        sendAnother: 'Weitere Nachricht senden'
     },
     es: {
         pageTitle: 'Enviar comentarios',
@@ -118,7 +128,9 @@ window.FEEDBACK_I18N = {
         sending: 'Enviando…',
         thanksTitle: '¡Gracias!',
         thanksText: 'Tu mensaje se ha enviado. Si dejaste tu correo, te responderé.',
-        sendFailed: 'No se pudo enviar el mensaje. Inténtalo de nuevo o escribe a'
+        sendFailed: 'No se pudo enviar el mensaje. Inténtalo de nuevo o escribe a',
+        yourMessage: 'Tu mensaje',
+        sendAnother: 'Enviar otro mensaje'
     },
     eu: {
         pageTitle: 'Bidali iritzia',
@@ -138,7 +150,9 @@ window.FEEDBACK_I18N = {
         sending: 'Bidaltzen…',
         thanksTitle: 'Eskerrik asko!',
         thanksText: 'Mezua bidali da. Helbide elektronikoa utzi baduzu, erantzungo dizut.',
-        sendFailed: 'Ezin izan da mezua bidali. Saiatu berriro, edo idatzi helbide honetara'
+        sendFailed: 'Ezin izan da mezua bidali. Saiatu berriro, edo idatzi helbide honetara',
+        yourMessage: 'Zure mezua',
+        sendAnother: 'Bidali beste mezu bat'
     },
     fi: {
         pageTitle: 'Lähetä palautetta',
@@ -158,7 +172,9 @@ window.FEEDBACK_I18N = {
         sending: 'Lähetetään…',
         thanksTitle: 'Kiitos!',
         thanksText: 'Viestisi on lähetetty. Jos jätit sähköpostiosoitteesi, vastaan sinulle.',
-        sendFailed: 'Viestin lähettäminen epäonnistui. Yritä uudelleen tai kirjoita osoitteeseen'
+        sendFailed: 'Viestin lähettäminen epäonnistui. Yritä uudelleen tai kirjoita osoitteeseen',
+        yourMessage: 'Viestisi',
+        sendAnother: 'Lähetä uusi viesti'
     },
     fr: {
         pageTitle: 'Envoyer un avis',
@@ -178,7 +194,9 @@ window.FEEDBACK_I18N = {
         sending: 'Envoi en cours…',
         thanksTitle: 'Merci !',
         thanksText: 'Votre message a été envoyé. Si vous avez laissé votre e-mail, je vous répondrai.',
-        sendFailed: 'Le message n’a pas pu être envoyé. Veuillez réessayer ou écrire à'
+        sendFailed: 'Le message n’a pas pu être envoyé. Veuillez réessayer ou écrire à',
+        yourMessage: 'Votre message',
+        sendAnother: 'Envoyer un autre message'
     },
     hr: {
         pageTitle: 'Pošalji povratne informacije',
@@ -198,7 +216,9 @@ window.FEEDBACK_I18N = {
         sending: 'Slanje…',
         thanksTitle: 'Hvala!',
         thanksText: 'Poruka je poslana. Ako ste ostavili e-poštu, odgovorit ću vam.',
-        sendFailed: 'Poruka nije poslana. Pokušajte ponovno ili pišite na'
+        sendFailed: 'Poruka nije poslana. Pokušajte ponovno ili pišite na',
+        yourMessage: 'Vaša poruka',
+        sendAnother: 'Pošalji još jednu poruku'
     },
     hu: {
         pageTitle: 'Visszajelzés küldése',
@@ -218,7 +238,9 @@ window.FEEDBACK_I18N = {
         sending: 'Küldés…',
         thanksTitle: 'Köszönöm!',
         thanksText: 'Az üzenet elküldve. Ha megadta az e-mail-címét, válaszolok.',
-        sendFailed: 'Nem sikerült elküldeni az üzenetet. Próbálja újra, vagy írjon erre a címre'
+        sendFailed: 'Nem sikerült elküldeni az üzenetet. Próbálja újra, vagy írjon erre a címre',
+        yourMessage: 'Az Ön üzenete',
+        sendAnother: 'Újabb üzenet küldése'
     },
     id: {
         pageTitle: 'Kirim masukan',
@@ -238,7 +260,9 @@ window.FEEDBACK_I18N = {
         sending: 'Mengirim…',
         thanksTitle: 'Terima kasih!',
         thanksText: 'Pesan Anda telah terkirim. Jika Anda meninggalkan email, saya akan membalas.',
-        sendFailed: 'Pesan tidak dapat dikirim. Coba lagi, atau tulis ke'
+        sendFailed: 'Pesan tidak dapat dikirim. Coba lagi, atau tulis ke',
+        yourMessage: 'Pesan Anda',
+        sendAnother: 'Kirim pesan lain'
     },
     is: {
         pageTitle: 'Senda ábendingu',
@@ -258,7 +282,9 @@ window.FEEDBACK_I18N = {
         sending: 'Sendi…',
         thanksTitle: 'Takk fyrir!',
         thanksText: 'Skilaboðin þín hafa verið send. Ef þú gafst upp netfang mun ég svara.',
-        sendFailed: 'Ekki tókst að senda skilaboðin. Reyndu aftur eða skrifaðu á'
+        sendFailed: 'Ekki tókst að senda skilaboðin. Reyndu aftur eða skrifaðu á',
+        yourMessage: 'Skilaboðin þín',
+        sendAnother: 'Senda önnur skilaboð'
     },
     it: {
         pageTitle: 'Invia un feedback',
@@ -278,7 +304,9 @@ window.FEEDBACK_I18N = {
         sending: 'Invio in corso…',
         thanksTitle: 'Grazie!',
         thanksText: 'Il tuo messaggio è stato inviato. Se hai lasciato la tua email, ti risponderò.',
-        sendFailed: 'Impossibile inviare il messaggio. Riprova o scrivi a'
+        sendFailed: 'Impossibile inviare il messaggio. Riprova o scrivi a',
+        yourMessage: 'Il tuo messaggio',
+        sendAnother: 'Invia un altro messaggio'
     },
     ja: {
         pageTitle: 'フィードバックを送信',
@@ -298,7 +326,9 @@ window.FEEDBACK_I18N = {
         sending: '送信中…',
         thanksTitle: 'ありがとうございます！',
         thanksText: 'メッセージを送信しました。メールアドレスを入力された場合は、返信いたします。',
-        sendFailed: 'メッセージを送信できませんでした。もう一度お試しいただくか、次のアドレスへご連絡ください'
+        sendFailed: 'メッセージを送信できませんでした。もう一度お試しいただくか、次のアドレスへご連絡ください',
+        yourMessage: '送信したメッセージ',
+        sendAnother: '別のメッセージを送信'
     },
     ko: {
         pageTitle: '의견 보내기',
@@ -318,7 +348,9 @@ window.FEEDBACK_I18N = {
         sending: '보내는 중…',
         thanksTitle: '감사합니다!',
         thanksText: '메시지를 보냈습니다. 이메일을 남기셨다면 답장 드리겠습니다.',
-        sendFailed: '메시지를 보내지 못했습니다. 다시 시도하시거나 다음 주소로 메일을 보내 주세요'
+        sendFailed: '메시지를 보내지 못했습니다. 다시 시도하시거나 다음 주소로 메일을 보내 주세요',
+        yourMessage: '보낸 메시지',
+        sendAnother: '다른 메시지 보내기'
     },
     lt: {
         pageTitle: 'Siųsti atsiliepimą',
@@ -338,7 +370,9 @@ window.FEEDBACK_I18N = {
         sending: 'Siunčiama…',
         thanksTitle: 'Ačiū!',
         thanksText: 'Žinutė išsiųsta. Jei palikote el. pašto adresą, atsakysiu.',
-        sendFailed: 'Nepavyko išsiųsti žinutės. Bandykite dar kartą arba rašykite adresu'
+        sendFailed: 'Nepavyko išsiųsti žinutės. Bandykite dar kartą arba rašykite adresu',
+        yourMessage: 'Jūsų žinutė',
+        sendAnother: 'Siųsti dar vieną žinutę'
     },
     lv: {
         pageTitle: 'Sūtīt atsauksmi',
@@ -358,7 +392,9 @@ window.FEEDBACK_I18N = {
         sending: 'Sūta…',
         thanksTitle: 'Paldies!',
         thanksText: 'Ziņa ir nosūtīta. Ja atstājāt e-pastu, es atbildēšu.',
-        sendFailed: 'Ziņu neizdevās nosūtīt. Mēģiniet vēlreiz vai rakstiet uz'
+        sendFailed: 'Ziņu neizdevās nosūtīt. Mēģiniet vēlreiz vai rakstiet uz',
+        yourMessage: 'Jūsu ziņa',
+        sendAnother: 'Sūtīt vēl vienu ziņu'
     },
     ms: {
         pageTitle: 'Hantar maklum balas',
@@ -378,7 +414,9 @@ window.FEEDBACK_I18N = {
         sending: 'Menghantar…',
         thanksTitle: 'Terima kasih!',
         thanksText: 'Mesej anda telah dihantar. Jika anda meninggalkan e-mel, saya akan membalas.',
-        sendFailed: 'Mesej tidak dapat dihantar. Sila cuba lagi atau tulis kepada'
+        sendFailed: 'Mesej tidak dapat dihantar. Sila cuba lagi atau tulis kepada',
+        yourMessage: 'Mesej anda',
+        sendAnother: 'Hantar mesej lain'
     },
     nl: {
         pageTitle: 'Feedback versturen',
@@ -398,7 +436,9 @@ window.FEEDBACK_I18N = {
         sending: 'Bezig met versturen…',
         thanksTitle: 'Bedankt!',
         thanksText: 'Uw bericht is verstuurd. Als u uw e-mailadres hebt achtergelaten, stuur ik u een antwoord.',
-        sendFailed: 'Het bericht kon niet worden verstuurd. Probeer het opnieuw of schrijf naar'
+        sendFailed: 'Het bericht kon niet worden verstuurd. Probeer het opnieuw of schrijf naar',
+        yourMessage: 'Uw bericht',
+        sendAnother: 'Nog een bericht versturen'
     },
     pl: {
         pageTitle: 'Wyślij opinię',
@@ -418,7 +458,9 @@ window.FEEDBACK_I18N = {
         sending: 'Wysyłanie…',
         thanksTitle: 'Dziękuję!',
         thanksText: 'Wiadomość została wysłana. Jeśli podano adres e-mail, odpowiem.',
-        sendFailed: 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na adres'
+        sendFailed: 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na adres',
+        yourMessage: 'Twoja wiadomość',
+        sendAnother: 'Wyślij kolejną wiadomość'
     },
     pt: {
         pageTitle: 'Enviar feedback',
@@ -438,7 +480,9 @@ window.FEEDBACK_I18N = {
         sending: 'Enviando…',
         thanksTitle: 'Obrigado!',
         thanksText: 'Sua mensagem foi enviada. Se você deixou seu e-mail, vou responder.',
-        sendFailed: 'Não foi possível enviar a mensagem. Tente novamente ou escreva para'
+        sendFailed: 'Não foi possível enviar a mensagem. Tente novamente ou escreva para',
+        yourMessage: 'Sua mensagem',
+        sendAnother: 'Enviar outra mensagem'
     },
     ro: {
         pageTitle: 'Trimite feedback',
@@ -458,7 +502,9 @@ window.FEEDBACK_I18N = {
         sending: 'Se trimite…',
         thanksTitle: 'Mulțumesc!',
         thanksText: 'Mesajul a fost trimis. Dacă ai lăsat adresa de e-mail, îți voi răspunde.',
-        sendFailed: 'Mesajul nu a putut fi trimis. Încearcă din nou sau scrie la'
+        sendFailed: 'Mesajul nu a putut fi trimis. Încearcă din nou sau scrie la',
+        yourMessage: 'Mesajul tău',
+        sendAnother: 'Trimite un alt mesaj'
     },
     ru: {
         pageTitle: 'Отправить отзыв',
@@ -478,7 +524,9 @@ window.FEEDBACK_I18N = {
         sending: 'Отправляю…',
         thanksTitle: 'Спасибо!',
         thanksText: 'Сообщение отправлено. Если вы оставили email, я отвечу.',
-        sendFailed: 'Не удалось отправить сообщение. Попробуйте ещё раз или напишите на'
+        sendFailed: 'Не удалось отправить сообщение. Попробуйте ещё раз или напишите на',
+        yourMessage: 'Ваше сообщение',
+        sendAnother: 'Отправить ещё одно сообщение'
     },
     sk: {
         pageTitle: 'Odoslať spätnú väzbu',
@@ -498,7 +546,9 @@ window.FEEDBACK_I18N = {
         sending: 'Odosiela sa…',
         thanksTitle: 'Ďakujem!',
         thanksText: 'Správa bola odoslaná. Ak ste zanechali e-mail, odpoviem vám.',
-        sendFailed: 'Správu sa nepodarilo odoslať. Skúste to znova alebo napíšte na'
+        sendFailed: 'Správu sa nepodarilo odoslať. Skúste to znova alebo napíšte na',
+        yourMessage: 'Vaša správa',
+        sendAnother: 'Odoslať ďalšiu správu'
     },
     sr: {
         pageTitle: 'Пошаљи повратне информације',
@@ -518,7 +568,9 @@ window.FEEDBACK_I18N = {
         sending: 'Слање…',
         thanksTitle: 'Хвала!',
         thanksText: 'Порука је послата. Ако сте оставили имејл, одговорићу вам.',
-        sendFailed: 'Порука није послата. Покушајте поново или пишите на'
+        sendFailed: 'Порука није послата. Покушајте поново или пишите на',
+        yourMessage: 'Ваша порука',
+        sendAnother: 'Пошаљи још једну поруку'
     },
     th: {
         pageTitle: 'ส่งความคิดเห็น',
@@ -538,7 +590,9 @@ window.FEEDBACK_I18N = {
         sending: 'กำลังส่ง…',
         thanksTitle: 'ขอบคุณ!',
         thanksText: 'ส่งข้อความแล้ว หากคุณฝากอีเมลไว้ ฉันจะตอบกลับ',
-        sendFailed: 'ส่งข้อความไม่สำเร็จ โปรดลองอีกครั้ง หรือเขียนถึง'
+        sendFailed: 'ส่งข้อความไม่สำเร็จ โปรดลองอีกครั้ง หรือเขียนถึง',
+        yourMessage: 'ข้อความของคุณ',
+        sendAnother: 'ส่งข้อความอื่น'
     },
     tr: {
         pageTitle: 'Geri bildirim gönder',
@@ -558,7 +612,9 @@ window.FEEDBACK_I18N = {
         sending: 'Gönderiliyor…',
         thanksTitle: 'Teşekkürler!',
         thanksText: 'Mesajınız gönderildi. E-posta adresinizi bıraktıysanız size yanıt vereceğim.',
-        sendFailed: 'Mesaj gönderilemedi. Lütfen tekrar deneyin veya şu adrese yazın'
+        sendFailed: 'Mesaj gönderilemedi. Lütfen tekrar deneyin veya şu adrese yazın',
+        yourMessage: 'Mesajınız',
+        sendAnother: 'Başka bir mesaj gönder'
     },
     uz: {
         pageTitle: 'Fikr-mulohaza yuborish',
@@ -578,7 +634,9 @@ window.FEEDBACK_I18N = {
         sending: 'Yuborilmoqda…',
         thanksTitle: 'Rahmat!',
         thanksText: 'Xabaringiz yuborildi. Agar elektron pochtangizni qoldirgan boʻlsangiz, javob beraman.',
-        sendFailed: 'Xabarni yuborib boʻlmadi. Qaytadan urinib koʻring yoki quyidagi manzilga yozing'
+        sendFailed: 'Xabarni yuborib boʻlmadi. Qaytadan urinib koʻring yoki quyidagi manzilga yozing',
+        yourMessage: 'Xabaringiz',
+        sendAnother: 'Yana xabar yuborish'
     },
     vi: {
         pageTitle: 'Gửi phản hồi',
@@ -598,7 +656,9 @@ window.FEEDBACK_I18N = {
         sending: 'Đang gửi…',
         thanksTitle: 'Cảm ơn bạn!',
         thanksText: 'Tin nhắn của bạn đã được gửi. Nếu bạn để lại email, tôi sẽ trả lời.',
-        sendFailed: 'Không thể gửi tin nhắn. Vui lòng thử lại hoặc viết thư đến'
+        sendFailed: 'Không thể gửi tin nhắn. Vui lòng thử lại hoặc viết thư đến',
+        yourMessage: 'Tin nhắn của bạn',
+        sendAnother: 'Gửi tin nhắn khác'
     },
     'zh-CN': {
         pageTitle: '发送反馈',
@@ -618,7 +678,9 @@ window.FEEDBACK_I18N = {
         sending: '发送中…',
         thanksTitle: '谢谢！',
         thanksText: '您的消息已发送。如果您留下了邮箱，我会回复您。',
-        sendFailed: '消息发送失败。请重试，或发送邮件至'
+        sendFailed: '消息发送失败。请重试，或发送邮件至',
+        yourMessage: '您的留言',
+        sendAnother: '再发一条消息'
     },
     'zh-TW': {
         pageTitle: '傳送意見回饋',
@@ -638,6 +700,8 @@ window.FEEDBACK_I18N = {
         sending: '傳送中…',
         thanksTitle: '謝謝！',
         thanksText: '您的訊息已送出。如果您留下了電子郵件，我會回覆您。',
-        sendFailed: '訊息傳送失敗。請再試一次，或寄信至'
+        sendFailed: '訊息傳送失敗。請再試一次，或寄信至',
+        yourMessage: '您的訊息',
+        sendAnother: '再傳送一則訊息'
     }
 };
