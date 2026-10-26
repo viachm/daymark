@@ -1003,3 +1003,103 @@ img { max-width: 100%; height: auto; display: block; }
 .feedback-reinstall a {
     color: #c0392b;
 }
+
+/* --- Feedback form page --- */
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feedback-type {
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.feedback-type legend {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.feedback-type .feedback-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feedback-type .feedback-option:has(input:checked) {
+    border-color: #c0392b;
+    background: #fffbeb;
+}
+
+.feedback-type input {
+    accent-color: #c0392b;
+}
+
+.feedback-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.feedback-field textarea,
+.feedback-field input {
+    font: inherit;
+    font-weight: 400;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    resize: vertical;
+}
+
+.feedback-field textarea:focus,
+.feedback-field input:focus {
+    outline: 2px solid #c0392b;
+    outline-offset: 1px;
+    border-color: transparent;
+}
+
+.feedback-hint {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #6b7280;
+}
+
+.feedback-error {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #b91c1c;
+}
+
+.feedback-trap {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.feedback-submit {
+    align-self: flex-start;
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.feedback-submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+}
+
+.feedback-done h2 {
+    margin-bottom: 6px;
+}
+
+.support-feedback {
+    justify-content: flex-start;
+    margin-top: 20px;
+}

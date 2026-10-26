@@ -64,7 +64,7 @@
                     <button type="button" class="feedback-option" data-reason="other">Other reason</button>
                 </div>
                 <p class="feedback-thanks" id="feedbackThanks" hidden>
-                    Thank you! If you want to tell us more, write to
+                    Thank you! If you want to tell us more, <a href="feedback.html" id="moreFeedbackLink">send a message</a> or write to
                     <a href="mailto:viacheslav.mukha@gmail.com?subject=DayMark%20feedback">viacheslav.mukha@gmail.com</a>.
                 </p>
                 <p class="feedback-reinstall">
@@ -126,6 +126,7 @@
         var params = new URLSearchParams(location.search);
         var extVersion = (params.get('v') || 'unknown').slice(0, 20);
         gtag('event', 'extension_uninstall', { ext_version: extVersion });
+        document.getElementById('moreFeedbackLink').href = 'feedback.html?src=uninstall&v=' + encodeURIComponent(extVersion);
 
         document.querySelectorAll('#feedbackOptions .feedback-option').forEach(function(btn) {
             btn.addEventListener('click', function() {

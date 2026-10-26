@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Report a problem or suggest an idea for DayMark: Year Events Calendar | Google™">
+    <meta name="google-site-verification" content="LgEKijWuAW4rtlg4k-rfDysMJshpU9vZ4BoyjMtVdMs" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z2MKS2S2ZM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z2MKS2S2ZM');
+    </script>
+    <title>Send feedback - DayMark: Year Events Calendar | Google™</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <img src="img/logo.png" alt="DayMark" class="nav-logo">
+                <span>DayMark</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#features">Features</a>
+                <a href="index.html">Home</a>
+                <a href="terms.html">Terms</a>
+                <a href="https://chromewebstore.google.com/detail/year-events-calendar/llkdnaajdbpjiodmejeihpjeaegohpak?utm_source=daymark_landing&utm_medium=landing&utm_campaign=install&utm_content=feedback_nav" class="nav-cta">Install</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-legal">
+        <div class="container">
+            <h1 data-i18n="title">Problem or idea?</h1>
+            <p data-i18n="subtitle">Tell me what doesn't work or what DayMark is missing. I read every message.</p>
+        </div>
+    </section>
+
+    <div class="legal-wrap">
+        <div class="container">
+            <div class="legal-content uninstall-content">
+                <form id="feedbackForm" class="feedback-form" novalidate>
+                    <fieldset class="feedback-type">
+                        <legend data-i18n="typeLabel">What is it about?</legend>
+                        <label class="feedback-option">
+                            <input type="radio" name="type" value="problem" checked>
+                            <span data-i18n="typeProblem">Something doesn't work</span>
+                        </label>
+                        <label class="feedback-option">
+                            <input type="radio" name="type" value="idea">
+                            <span data-i18n="typeIdea">I have an idea</span>
+                        </label>
+                    </fieldset>
+
+                    <label class="feedback-field">
+                        <span data-i18n="messageLabel">Your message</span>
+                        <textarea name="message" id="feedbackMessage" rows="6" maxlength="3000" required
+                                  data-i18n-placeholder="messagePlaceholder"
+                                  placeholder="What happened, or what would you like DayMark to do?"></textarea>
+                        <span class="feedback-error" id="messageError" data-i18n="messageRequired" hidden>Please write a few words.</span>
+                    </label>
+
+                    <label class="feedback-field">
+                        <span data-i18n="emailLabel">Your email (optional)</span>
+                        <input type="email" name="email" id="feedbackEmail" maxlength="200" autocomplete="email">
+                        <span class="feedback-hint" data-i18n="emailHint">Only if you would like a reply. It is not used for anything else.</span>
+                        <span class="feedback-error" id="emailError" data-i18n="emailInvalid" hidden>This email doesn't look right.</span>
+                    </label>
+
+                    <!-- Bots fill every field; people never see this one -->
+                    <label class="feedback-trap" aria-hidden="true">
+                        Website <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </label>
+
+                    <p class="feedback-hint" data-i18n="sentWith">Your extension version, browser and language are sent with the message. Nothing else about you.</p>
+
+                    <button type="submit" class="cta-btn cta-btn-primary feedback-submit" id="feedbackSubmit" data-i18n="send">Send</button>
+                </form>
+
+                <div class="feedback-done" id="feedbackDone" role="status" hidden>
+                    <h2 data-i18n="thanksTitle">Thank you!</h2>
+                    <p data-i18n="thanksText">Your message has been sent. If you left your email, I will reply.</p>
+                </div>
+
+                <p class="feedback-thanks" id="feedbackFailed" role="alert" hidden>
+                    <span data-i18n="sendFailed">The message could not be sent. Please try again, or write to</span>
+                    <a href="mailto:viacheslav.mukha@gmail.com?subject=DayMark%20feedback">viacheslav.mukha@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="img/logo.png" alt="">
+                        <span>DayMark</span>
+                    </div>
+                    <p class="footer-desc">Year Events Calendar | Google™. A browser extension for managing events with color-coded visualization, statistics, and multi-language support.</p>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://chromewebstore.google.com/detail/year-events-calendar/llkdnaajdbpjiodmejeihpjeaegohpak?utm_source=daymark_landing&utm_medium=landing&utm_campaign=install&utm_content=feedback_footer">Chrome Web Store</a></li>
+                        <li><a href="https://addons.mozilla.org/en-US/firefox/addon/year-events-calendar/">Firefox Add-ons</a></li>
+                        <li><a href="https://microsoftedge.microsoft.com/addons/detail/year-events-calendar/nmlfhfdbgjjcmnfnpcocpoppjimgnaam?utm_source=daymark_landing&utm_medium=landing&utm_campaign=install&utm_content=feedback_footer">Edge Add-ons</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="mailto:viacheslav.mukha@gmail.com">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> DayMark: Year Events Calendar | Google™ by Viacheslav Mukha. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        var nav = document.getElementById('nav');
+        window.addEventListener('scroll', function() {
+            nav.classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        document.getElementById('navToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+    </script>
+
+    <script src="feedback-i18n.js"></script>
+    <script>
+        // Feedback page: opened from the extension (?v=<version>&b=<browser>&lang=<language>&src=<where>) or the site.
+        // Messages go to a Google Form; its Apps Script mails each one to the developer.
+        var FEEDBACK_FORM = {
+            // https://docs.google.com/forms/d/e/<form id>/formResponse, and the form's entry.<id> of each question
+            action: '',
+            entries: { type: '', message: '', email: '', version: '', browser: '', language: '', source: '' }
+        };
+
+        var params = new URLSearchParams(location.search);
+        var extVersion = (params.get('v') || 'unknown').slice(0, 20);
+        var extBrowser = (params.get('b') || 'unknown').slice(0, 20);
+        var source = (params.get('src') || 'site').slice(0, 20);
+
+        // The extension's language first, then the browser's, then English
+        function pickLanguage() {
+            var texts = window.FEEDBACK_I18N || {};
+            var aliases = { ua: 'uk', 'zh-hk': 'zh-TW', 'zh-hant': 'zh-TW', 'zh-mo': 'zh-TW', zh: 'zh-CN' };
+            var wanted = [params.get('lang')].concat(navigator.languages || [navigator.language]);
+            for (var i = 0; i < wanted.length; i++) {
+                if (!wanted[i]) continue;
+                var code = wanted[i].replace('_', '-');
+                var lower = code.toLowerCase();
+                var tried = [code, aliases[lower], lower.split('-')[0], aliases[lower.split('-')[0]]];
+                for (var j = 0; j < tried.length; j++) {
+                    var match = tried[j] && Object.keys(texts).filter(function(k) { return k.toLowerCase() === tried[j].toLowerCase(); })[0];
+                    if (match) return match;
+                }
+            }
+            return 'en';
+        }
+
+        var language = pickLanguage();
+        var t = Object.assign({}, (window.FEEDBACK_I18N || {}).en, (window.FEEDBACK_I18N || {})[language]);
+        document.documentElement.lang = language;
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+            if (t[el.getAttribute('data-i18n')]) el.textContent = t[el.getAttribute('data-i18n')];
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+            if (t[el.getAttribute('data-i18n-placeholder')]) el.placeholder = t[el.getAttribute('data-i18n-placeholder')];
+        });
+        if (t.pageTitle) document.title = t.pageTitle + ' - DayMark';
+
+        gtag('event', 'feedback_open', { source: source, ext_version: extVersion, ext_browser: extBrowser });
+
+        var form = document.getElementById('feedbackForm');
+        var submit = document.getElementById('feedbackSubmit');
+        var message = document.getElementById('feedbackMessage');
+        var email = document.getElementById('feedbackEmail');
+
+        function showDone() {
+            form.hidden = true;
+            document.getElementById('feedbackFailed').hidden = true;
+            document.getElementById('feedbackDone').hidden = false;
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var text = message.value.trim();
+            var mail = email.value.trim();
+            document.getElementById('messageError').hidden = !!text;
+            document.getElementById('emailError').hidden = !mail || email.checkValidity();
+            if (!text) { message.focus(); return; }
+            if (mail && !email.checkValidity()) { email.focus(); return; }
+
+            var type = form.elements.type.value;
+            // A filled trap field is a bot: look done, send nothing
+            if (form.elements.website.value) { showDone(); return; }
+
+            submit.disabled = true;
+            submit.textContent = t.sending || 'Sending…';
+            var body = new URLSearchParams();
+            var values = { type: type, message: text, email: mail, version: extVersion, browser: extBrowser, language: language, source: source };
+            Object.keys(values).forEach(function(key) {
+                if (FEEDBACK_FORM.entries[key]) body.append(FEEDBACK_FORM.entries[key], values[key]);
+            });
+
+            var sent = FEEDBACK_FORM.action
+                ? fetch(FEEDBACK_FORM.action, { method: 'POST', mode: 'no-cors', body: body })
+                : Promise.reject(new Error('Feedback form is not set up'));
+            sent.then(function() {
+                gtag('event', 'feedback_send', { type: type, source: source, ext_version: extVersion, ext_browser: extBrowser, with_email: mail ? 'yes' : 'no' });
+                showDone();
+            }).catch(function() {
+                gtag('event', 'feedback_send_failed', { source: source, ext_version: extVersion });
+                submit.disabled = false;
+                submit.textContent = t.send || 'Send';
+                document.getElementById('feedbackFailed').hidden = false;
+            });
+        });
+    </script>
+</body>
+</html>
