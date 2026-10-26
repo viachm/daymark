@@ -1014,7 +1014,7 @@ img { max-width: 100%; height: auto; display: block; }
 .feedback-type {
     border: 0;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -1027,6 +1027,8 @@ img { max-width: 100%; height: auto; display: block; }
     display: flex;
     align-items: center;
     gap: 10px;
+    /* Side by side; under each other only when there is no room */
+    flex: 1 1 200px;
 }
 
 .feedback-type .feedback-option:has(input:checked) {
