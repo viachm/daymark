@@ -45,7 +45,7 @@
     <section class="hero-legal">
         <div class="container">
             <h1 data-i18n="title">Problem or idea?</h1>
-            <p data-i18n="subtitle">Tell me what doesn't work or what DayMark is missing. I read every message.</p>
+            <p data-i18n="subtitle">Tell us what doesn't work or what DayMark is missing. We read every message.</p>
         </div>
     </section>
 
@@ -73,6 +73,22 @@
                         <span class="feedback-error" id="messageError" data-i18n="messageRequired" hidden>Please write a few words.</span>
                     </label>
 
+                    <div class="feedback-field feedback-shots-field">
+                        <span id="shotsLabel" data-i18n="screenshotsLabel">Screenshots (optional)</span>
+                        <ul class="feedback-shots" id="shotsList" aria-labelledby="shotsLabel" hidden></ul>
+                        <button type="button" class="feedback-attach" id="shotsAdd" aria-describedby="shotsHint">
+                            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                <rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                                <circle cx="9" cy="10" r="1.6" fill="currentColor"/>
+                                <path d="M4 17l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                            </svg>
+                            <span data-i18n="addScreenshot">Add screenshot</span>
+                        </button>
+                        <input type="file" id="shotsInput" accept="image/*" multiple hidden>
+                        <span class="feedback-hint" id="shotsHint" data-i18n="screenshotsHint">Up to 3 images. You can also paste them or drag them into the form.</span>
+                        <span class="feedback-error" id="shotsError" role="alert" hidden></span>
+                    </div>
+
                     <label class="feedback-field">
                         <span data-i18n="emailLabel">Your email (optional)</span>
                         <input type="email" name="email" id="feedbackEmail" maxlength="200" autocomplete="email">
@@ -98,10 +114,14 @@
                         </svg>
                         <h2 id="feedbackDoneTitle" tabindex="-1" data-i18n="thanksTitle">Thank you!</h2>
                     </div>
-                    <p data-i18n="thanksText">Your message has been sent. If you left your email, I will reply.</p>
+                    <p data-i18n="thanksText">Your message has been sent. If you left your email, we will reply.</p>
                     <div class="feedback-sent">
                         <span class="feedback-sent-label" data-i18n="yourMessage">Your message</span>
                         <p class="feedback-sent-text" id="feedbackSentText"></p>
+                        <div class="feedback-sent-shots" id="feedbackSentShotsWrap" hidden>
+                            <span class="feedback-sent-label" id="sentShotsLabel" data-i18n="yourScreenshots">Screenshots</span>
+                            <ul class="feedback-shots" id="feedbackSentShots" aria-labelledby="sentShotsLabel"></ul>
+                        </div>
                     </div>
                     <button type="button" class="feedback-again" id="feedbackAgain" data-i18n="sendAnother">Send another message</button>
                 </div>
@@ -209,11 +229,174 @@
 
         var done = document.getElementById('feedbackDone');
 
+        // --- Screenshots: up to 3 images, shrunk in the browser to JPEG before sending ---
+        var MAX_SHOTS = 3;
+        var MAX_FILE_BYTES = 15 * 1024 * 1024;  // refused before reading
+        var MAX_SIDE = 1600;                     // px, longer side
+        var TARGET_BYTES = 700 * 1024;           // step JPEG quality down until under this
+        var shots = [];                          // { name, data: base64 JPEG without the data: prefix, ready: Promise }
+        var sending = false;
+        var shotsList = document.getElementById('shotsList');
+        var shotsAdd = document.getElementById('shotsAdd');
+        var shotsInput = document.getElementById('shotsInput');
+        var shotsError = document.getElementById('shotsError');
+
+        function showShotsError(text) {
+            shotsError.textContent = text || '';
+            shotsError.hidden = !text;
+        }
+
+        function updateShots() {
+            shotsList.hidden = !shots.length;
+            shotsAdd.disabled = sending || shots.length >= MAX_SHOTS;
+            shotsList.querySelectorAll('button').forEach(function(b) { b.disabled = sending; });
+        }
+
+        function loadImage(file) {
+            return new Promise(function(resolve, reject) {
+                var url = URL.createObjectURL(file);
+                var img = new Image();
+                img.onload = function() { URL.revokeObjectURL(url); resolve(img); };
+                img.onerror = function() { URL.revokeObjectURL(url); reject(new Error('unreadable image')); };
+                img.src = url;
+            });
+        }
+
+        // At most MAX_SIDE px on the longer side, JPEG on white (transparent PNGs would otherwise turn black)
+        function toJpeg(img) {
+            var w = img.naturalWidth, h = img.naturalHeight;
+            if (!w || !h) throw new Error('empty image');
+            var scale = Math.min(1, MAX_SIDE / Math.max(w, h));
+            var canvas = document.createElement('canvas');
+            canvas.width = Math.max(1, Math.round(w * scale));
+            canvas.height = Math.max(1, Math.round(h * scale));
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            var data = '';
+            [0.8, 0.7, 0.6].some(function(quality) {
+                data = canvas.toDataURL('image/jpeg', quality).split(',')[1] || '';
+                return data.length * 3 / 4 <= TARGET_BYTES;
+            });
+            if (!data) throw new Error('could not encode');
+            return data;
+        }
+
+        function removeShot(shot, moveFocus) {
+            var i = shots.indexOf(shot);
+            if (i < 0) return;
+            shots.splice(i, 1);
+            shot.li.remove();
+            updateShots();
+            if (moveFocus) {
+                var next = shots[i] || shots[i - 1];
+                (next ? next.li.querySelector('button') : shotsAdd).focus();
+            }
+        }
+
+        function addFiles(files) {
+            if (sending || form.hidden) return;
+            var images = Array.prototype.filter.call(files || [], function(f) { return f && /^image\//.test(f.type); });
+            if (!images.length) return;
+            var problem = '';
+            images.forEach(function(file) {
+                if (shots.length >= MAX_SHOTS) { problem = t.screenshotsLimit; return; }
+                if (file.size > MAX_FILE_BYTES) { problem = problem || t.screenshotTooBig; return; }
+                var shot = { name: Array.from(file.name || 'screenshot').slice(0, 80).join(''), data: null };
+                shot.li = document.createElement('li');
+                shot.li.className = 'feedback-shot is-loading';
+                var img = document.createElement('img');
+                img.alt = shot.name;
+                var remove = document.createElement('button');
+                remove.type = 'button';
+                remove.className = 'feedback-shot-remove';
+                remove.textContent = '×';
+                remove.setAttribute('aria-label', (t.removeScreenshot || 'Remove screenshot') + ': ' + shot.name);
+                remove.addEventListener('click', function() { if (!sending) { showShotsError(''); removeShot(shot, true); } });
+                shot.li.appendChild(img);
+                shot.li.appendChild(remove);
+                shotsList.appendChild(shot.li);
+                shots.push(shot);
+                shot.ready = loadImage(file).then(toJpeg).then(function(data) {
+                    shot.data = data;
+                    img.src = 'data:image/jpeg;base64,' + data;
+                    shot.li.classList.remove('is-loading');
+                }).catch(function() {
+                    removeShot(shot, false);
+                    showShotsError(t.screenshotFailed);
+                });
+            });
+            showShotsError(problem);
+            updateShots();
+        }
+
+        shotsAdd.addEventListener('click', function() { shotsInput.click(); });
+        shotsInput.addEventListener('change', function() {
+            addFiles(shotsInput.files);
+            shotsInput.value = '';  // the same file can be chosen again after removing it
+        });
+
+        // Paste an image (Cmd/Ctrl+V) anywhere on the page while the form is shown. Text pastes are left alone.
+        document.addEventListener('paste', function(e) {
+            var cd = e.clipboardData;
+            if (form.hidden || !cd || Array.prototype.indexOf.call(cd.types || [], 'text/plain') >= 0) return;
+            var files = Array.prototype.slice.call(cd.files || []);
+            if (!files.length && cd.items) {
+                Array.prototype.forEach.call(cd.items, function(item) {
+                    var f = item.kind === 'file' && item.getAsFile();
+                    if (f) files.push(f);
+                });
+            }
+            if (!files.some(function(f) { return /^image\//.test(f.type); })) return;
+            e.preventDefault();
+            addFiles(files);
+        });
+
+        // Drop image files onto the form (the message field included)
+        function draggingFiles(e) {
+            return e.dataTransfer && Array.prototype.indexOf.call(e.dataTransfer.types || [], 'Files') >= 0;
+        }
+        form.addEventListener('dragover', function(e) {
+            if (!draggingFiles(e)) return;
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'copy';
+            form.classList.add('is-dropping');
+        });
+        form.addEventListener('dragleave', function(e) {
+            if (!form.contains(e.relatedTarget)) form.classList.remove('is-dropping');
+        });
+        form.addEventListener('drop', function(e) {
+            form.classList.remove('is-dropping');
+            if (!draggingFiles(e)) return;
+            e.preventDefault();
+            addFiles(e.dataTransfer.files);
+        });
+
+        function clearShots() {
+            shots.slice().forEach(function(shot) { removeShot(shot, false); });
+            showShotsError('');
+            updateShots();
+        }
+
         function showDone(text) {
             form.hidden = true;
             document.getElementById('feedbackFailed').hidden = true;
             // User input: textContent only, never innerHTML
             document.getElementById('feedbackSentText').textContent = text;
+            var sentShots = document.getElementById('feedbackSentShots');
+            sentShots.textContent = '';
+            shots.forEach(function(shot) {
+                var li = document.createElement('li');
+                li.className = 'feedback-shot';
+                var img = document.createElement('img');
+                img.src = 'data:image/jpeg;base64,' + shot.data;
+                img.alt = shot.name;
+                li.appendChild(img);
+                sentShots.appendChild(li);
+            });
+            document.getElementById('feedbackSentShotsWrap').hidden = !shots.length;
             done.hidden = false;
             document.getElementById('feedbackDoneTitle').focus();
         }
@@ -222,8 +405,12 @@
         document.getElementById('feedbackAgain').addEventListener('click', function() {
             done.hidden = true;
             document.getElementById('feedbackSentText').textContent = '';
+            document.getElementById('feedbackSentShots').textContent = '';
+            document.getElementById('feedbackSentShotsWrap').hidden = true;
             message.value = '';
             document.getElementById('messageError').hidden = true;
+            sending = false;
+            clearShots();
             submit.disabled = false;
             submit.textContent = t.send || 'Send';
             form.hidden = false;
@@ -232,6 +419,7 @@
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
+            if (sending) return;
             var text = message.value.trim();
             var mail = email.value.trim();
             document.getElementById('messageError').hidden = !!text;
@@ -240,24 +428,37 @@
             if (mail && !email.checkValidity()) { email.focus(); return; }
 
             var type = form.elements.type.value;
-            // A filled trap field is a bot: look done, send nothing
-            if (form.elements.website.value) { showDone(text); return; }
-
+            sending = true;
+            updateShots();
             submit.disabled = true;
             submit.textContent = t.sending || 'Sending…';
-            var body = new URLSearchParams({ type: type, message: text, email: mail, version: extVersion, browser: extBrowser, language: language, source: source });
 
-            // The script's reply is cross-origin and unreadable (no-cors): only a network failure counts as not sent
-            var sent = fetch(FEEDBACK_ENDPOINT, { method: 'POST', mode: 'no-cors', body: body });
-            sent.then(function() {
-                gtag('event', 'feedback_send', { type: type, source: source, ext_version: extVersion, ext_browser: extBrowser, with_email: mail ? 'yes' : 'no' });
-                showDone(text);
-            }).catch(function() {
+            function failed() {
                 gtag('event', 'feedback_send_failed', { source: source, ext_version: extVersion });
+                sending = false;
+                updateShots();
                 submit.disabled = false;
                 submit.textContent = t.send || 'Send';
                 document.getElementById('feedbackFailed').hidden = false;
-            });
+            }
+
+            // Images still being shrunk are waited for; ones that could not be read have removed themselves
+            Promise.all(shots.map(function(shot) { return shot.ready; })).then(function() {
+                // A filled trap field is a bot: look done, send nothing
+                if (form.elements.website.value) { showDone(text); return; }
+
+                var body = new URLSearchParams({ type: type, message: text, email: mail, version: extVersion, browser: extBrowser, language: language, source: source });
+                shots.forEach(function(shot, i) {
+                    body.append('image' + (i + 1), shot.data);
+                    body.append('image' + (i + 1) + '_name', shot.name);
+                });
+
+                // The script's reply is cross-origin and unreadable (no-cors): only a network failure counts as not sent
+                return fetch(FEEDBACK_ENDPOINT, { method: 'POST', mode: 'no-cors', body: body }).then(function() {
+                    gtag('event', 'feedback_send', { type: type, source: source, ext_version: extVersion, ext_browser: extBrowser, with_email: mail ? 'yes' : 'no', screenshots: shots.length });
+                    showDone(text);
+                });
+            }).catch(failed);
         });
     </script>
 </body>
