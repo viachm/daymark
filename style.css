@@ -979,7 +979,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .feedback-option:hover:not(:disabled) {
     border-color: #c0392b;
-    background: #fffbeb;
+    background: #f5f5f5;
 }
 
 .feedback-option:disabled {
@@ -989,7 +989,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .feedback-option.selected {
     border-color: #c0392b;
-    background: #fffbeb;
+    background: #f5f5f5;
     color: #1a1a1a;
 }
 
@@ -1031,7 +1031,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .feedback-type .feedback-option:has(input:checked) {
     border-color: #c0392b;
-    background: #fffbeb;
+    background: #f5f5f5;
 }
 
 .feedback-type input {
